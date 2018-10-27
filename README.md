@@ -1,9 +1,11 @@
 Photo Album
+
 This project is an application to display the contents of a photo album which is provided by a .json file.
 Specifically this code will take a .json file and a photo album and display the Id's and titles of all of
 the photos contained in the album.
 
 Getting Started
+
   In order to run this code you just need to provide command line arguments to the program in the form of
 filename.json photo album num (with num being an actual integer). It is important that there be a number somewhere
 in the arguments after the filename (note if mutilple numbers are entered only the last one will be used). The
@@ -20,6 +22,7 @@ After getting valid inputs you will see the contents of the photo album printed 
 
 
 Running the tests
+
 The tests can by run in the PhotoAlbumTest.py file. All you need to do is run that file and you'll see the test outputs.
 Break down into end to end tests
 Explain what these tests test and why
