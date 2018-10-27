@@ -6,8 +6,9 @@ A program to display the contents of a photo album as outlined in a .json file
 # An object that is a storage class for a collection of photo objects. One thing that I did to make this 
 # different than the non object storage method is that all of the photos are stored in a dictionary with keys
 # corresponding to the photo id's. This has its pros and cons. We can get constant lookup time for photos and
-# we can more easily edit their content, but there won't be any duplicates which could be a pro or a con depending
-# on what we're trying to do. 
+# we can more easily edit their content, but there won't be any duplicates (or rather photos, even if they're 
+# different but have the same photo id) which could be a pro or a con depending on what we're trying to do. 
+
 class PhotoAlbum():
     def __init__(self, albumId):
         self.albumId = albumId
@@ -26,6 +27,7 @@ class PhotoAlbum():
         for photo in self.photos:
             self.photos[photo].idAndTitle() 
     
+    # defines equality for photo albums. 
     def __eq__(self, other):
         if self is other:
             return True
