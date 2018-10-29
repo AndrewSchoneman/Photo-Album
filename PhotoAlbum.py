@@ -128,6 +128,8 @@ def printFile(photoAlbum, num):
 def check(album, size):
     # check to see if we got a valid input form the user or command line. If we strip away all non number
     # characters and are left with nothing then we know the entry is invalid
+    if type(size) != int:
+        raise ValueError("check must be an integer")
     if len(album.lower().strip("abcdefghijklmopqrstuvwxyz!@#$%^&*()\"\'\?/+,.:;`~").split() ) >= 1:      
         try:
             # If something remains try and convert it to an int. If more than one number is entered then

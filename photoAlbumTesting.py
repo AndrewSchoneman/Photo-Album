@@ -36,11 +36,15 @@ class Test(unittest.TestCase):
     # is a number so the input is valid
     def test_Check(self):
         self.assertEqual(1, check("1", 10), "Check test")
+    
+    # Test to make sure that if check is given an invalid size type a value error is thrown
+    def test_Check_Size(self):
+        self.assertRaises(ValueError, check, 1, "badInput")
        
     # Test to see if a number which is too large is not accepted by the check function. In this case
     # 1000 is greater than so it shouldn't be accepted. Then a valid input is given and we make sure 
     # that the value returned is correct.
-    def testCheckNumTooLarge(self):
+    def test_Check_NumToo_Large(self):
         userInput = "1"
         with mock.patch('builtins.input', side_effect=userInput):
             answer = check("1000",10)           
