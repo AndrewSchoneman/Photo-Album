@@ -8,7 +8,7 @@ Getting Started
 
   In order to run this code you just need to provide command line arguments to the program in the form of
 filename.json photo album num (with num being an actual integer). It is important that there be a number somewhere
-in the arguments after the filename (note if mutilple numbers are entered only the last one will be used). The
+in the arguments after the filename (note if multiple numbers are entered only the last one will be used). The
 program will then prompt you if you want to create objects and you can specify yes or no or quit by typing quit.
 If any of the arguments are incorrect (i.e. the file can't be opened or the photo album number doesn't exist) then
 the program will prompt the user for a valid json file and photo album. It will not stop asking for valid input until
@@ -23,13 +23,12 @@ After getting valid inputs you will see the contents of the photo album printed 
 
 Running the tests
 
-The tests can by run in the PhotoAlbumTest.py file. All you need to do is run that file and you'll see the test outputs.
-Break down into end to end tests
-Explain what these tests test and why
+The tests can by run in the PhotoAlbumTest.py file. All you need to do is run that file and you'll see the test outputs. There are 25 
+tests and they test all aspects of the program. 
 
-Give an example
-And coding style tests
-Explain what these tests test and why
+They build up from the more basic functions all way to the most complicated ones which are the drivers of the program. For example there 
+is an important function in the program which checks to make sure that the user has input a valid photo album to view. The tests check 
+to see what happens when the checker gets bad inputs until it gets a good input as well as if it exits the program correctly given the quit command.
 
 
 Authors
