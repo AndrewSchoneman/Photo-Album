@@ -9,7 +9,7 @@ A program to display the contents of a photo album as outlined in a .json file
 # we can more easily edit their content, but there won't be any duplicates (or rather photos, even if they're 
 # different but have the same photo id) which could be a pro or a con depending on what we're trying to do. 
 
-class PhotoAlbum():
+class PhotoAlbumObj():
     def __init__(self, albumId):
         self.albumId = albumId
         self.photos = {}
@@ -19,7 +19,7 @@ class PhotoAlbum():
         if type(photo) == Photo:
             self.photos[photo.idNum] = photo
         else:
-            print("Only photos can be added to a photo album")
+            raise ValueError("Only photos may be added to a photo Album")
     
     # Prints out the name of the photo album and all of the photos it contains
     def displayContents(self):
@@ -31,7 +31,7 @@ class PhotoAlbum():
     def __eq__(self, other):
         if self is other:
             return True
-        elif type(other) != PhotoAlbum:
+        elif type(other) != PhotoAlbumObj:
             return False
         else:
             if self.albumId == other.albumId:
@@ -56,6 +56,9 @@ class Photo():
         self.url = url
         self.thumbnail = thumbnail
         
+        if type(idNum) != int:
+            raise ValueError("PhotoAlbum Id must be an integer")
+         
     # Prints off the photo Id and title
     def idAndTitle(self):
         print("[{self.idNum}] {self.title}".format(self=self))
@@ -78,7 +81,7 @@ def createObjects(file):
     photoAlbum = {}
     for entry in file:
         if int(entry['albumId']) not in photoAlbum:
-            photoAlbum[int(entry["albumId"])] = PhotoAlbum((int(entry['albumId'])))
+            photoAlbum[int(entry["albumId"])] = PhotoAlbumObj((int(entry['albumId'])))
             photoAlbum[int(entry['albumId'])].addPhoto( Photo(int(entry['id'] ), entry["title"], entry['url'], entry['thumbnailUrl']))
         else:
             photoAlbum[int(entry["albumId"])].addPhoto(  Photo(int(entry['id']) , entry["title"], entry['url'], entry['thumbnailUrl']))  
@@ -228,6 +231,6 @@ def main(argv):
         photoAlbums = createObjects(jsonFileCheck(photoAlbumFile))
         photoAlbums[check(albumToView, len(photoAlbums))].displayContents()
                     
-# calls main on the command line arguments
+# calls main to get the program started. The args are the command line args provided by the user. 
 if __name__ == "__main__":
     main(sys.argv[1:])
